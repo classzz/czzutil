@@ -184,11 +184,14 @@ func (b *BlockChain) ProcessBlock(block *czzutil.Block, flags BehaviorFlags) (bo
 	blockHeader := &block.MsgBlock().Header
 	prevHash := &blockHeader.PrevBlock
 	prevHashExists, err := b.blockExists(prevHash)
+	prevHeader, _ := b.HeaderByHash(prevHash)
+
 	if err != nil {
 		return false, false, err
 	}
+
 	// Perform preliminary sanity checks on the block and its transactions.
-	err = checkBlockSanity(block, b.chainParams.PowLimit, b.timeSource, flags)
+	err = checkBlockSanity(b.chainParams, &prevHeader, block, b.chainParams.PowLimit, b.timeSource, flags)
 	if err != nil {
 		return false, false, err
 	}
@@ -198,6 +201,11 @@ func (b *BlockChain) ProcessBlock(block *czzutil.Block, flags BehaviorFlags) (bo
 		b.addOrphanBlock(block)
 
 		return false, true, nil
+	}
+	if b.chainParams.EntangleHeight < block.Height() {
+		if err := b.CheckBlockEntangle(block); err != nil {
+			return false, false, err
+		}
 	}
 
 	// The block has passed all context independent checks and appears sane
