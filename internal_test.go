@@ -12,8 +12,8 @@ interface. The functions are only exported while the tests are being run.
 package czzutil
 
 import (
-	"github.com/classzz/classzz/bchec"
 	"github.com/classzz/classzz/chaincfg"
+	"github.com/classzz/classzz/czzec"
 	"github.com/classzz/czzutil/base58"
 	"golang.org/x/crypto/ripemd160"
 	"strings"
@@ -79,10 +79,10 @@ func TstLegacyAddressScriptHash(hash [ripemd160.Size]byte,
 func TstAddressPubKey(serializedPubKey []byte, pubKeyFormat PubKeyFormat,
 	netID byte) *AddressPubKey {
 
-	pubKey, _ := bchec.ParsePubKey(serializedPubKey, bchec.S256())
+	pubKey, _ := czzec.ParsePubKey(serializedPubKey, czzec.S256())
 	return &AddressPubKey{
 		pubKeyFormat: pubKeyFormat,
-		pubKey:       (*bchec.PublicKey)(pubKey),
+		pubKey:       (*czzec.PublicKey)(pubKey),
 		pubKeyHashID: netID,
 	}
 }

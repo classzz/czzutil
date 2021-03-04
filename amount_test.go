@@ -121,28 +121,28 @@ func TestAmountUnitConversions(t *testing.T) {
 		{
 			name:      "MBCH",
 			amount:    MaxSatoshi,
-			unit:      AmountMegaBCH,
+			unit:      AmountMegaCZZ,
 			converted: 21,
 			s:         "21 MBCH",
 		},
 		{
 			name:      "kBCH",
 			amount:    44433322211100,
-			unit:      AmountKiloBCH,
+			unit:      AmountKiloCZZ,
 			converted: 444.33322211100,
 			s:         "444.333222111 kBCH",
 		},
 		{
 			name:      "BCH",
 			amount:    44433322211100,
-			unit:      AmountBCH,
+			unit:      AmountCZZ,
 			converted: 444333.22211100,
 			s:         "444333.222111 BCH",
 		},
 		{
 			name:      "mBCH",
 			amount:    44433322211100,
-			unit:      AmountMilliBCH,
+			unit:      AmountMilliCZZ,
 			converted: 444333222.11100,
 			s:         "444333222.111 mBCH",
 		},
@@ -150,7 +150,7 @@ func TestAmountUnitConversions(t *testing.T) {
 
 			name:      "μBCH",
 			amount:    44433322211100,
-			unit:      AmountMicroBCH,
+			unit:      AmountMicroCZZ,
 			converted: 444333222111.00,
 			s:         "444333222111 μBCH",
 		},
@@ -186,14 +186,14 @@ func TestAmountUnitConversions(t *testing.T) {
 		}
 
 		// Verify that Amount.ToBCH works as advertised.
-		f1 := test.amount.ToUnit(AmountBCH)
-		f2 := test.amount.ToBCH()
+		f1 := test.amount.ToUnit(AmountCZZ)
+		f2 := test.amount.ToCZZ()
 		if f1 != f2 {
 			t.Errorf("%v: ToBCH does not match ToUnit(AmountBCH): %v != %v", test.name, f1, f2)
 		}
 
 		// Verify that Amount.String works as advertised.
-		s1 := test.amount.Format(AmountBCH)
+		s1 := test.amount.Format(AmountCZZ)
 		s2 := test.amount.String()
 		if s1 != s2 {
 			t.Errorf("%v: String does not match Format(AmountBitcoin): %v != %v", test.name, s1, s2)

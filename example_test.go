@@ -61,10 +61,10 @@ func ExampleNewAmount() {
 func ExampleAmount_unitConversions() {
 	amount := czzutil.Amount(44433322211100)
 
-	fmt.Println("Satoshi to kBCH:", amount.Format(czzutil.AmountKiloBCH))
+	fmt.Println("Satoshi to kBCH:", amount.Format(czzutil.AmountKiloCZZ))
 	fmt.Println("Satoshi to BCH:", amount)
-	fmt.Println("Satoshi to MilliBCH:", amount.Format(czzutil.AmountMilliBCH))
-	fmt.Println("Satoshi to MicroBCH:", amount.Format(czzutil.AmountMicroBCH))
+	fmt.Println("Satoshi to MilliBCH:", amount.Format(czzutil.AmountMilliCZZ))
+	fmt.Println("Satoshi to MicroBCH:", amount.Format(czzutil.AmountMicroCZZ))
 	fmt.Println("Satoshi to Satoshi:", amount.Format(czzutil.AmountSatoshi))
 
 	// Output:
