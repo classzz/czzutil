@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/OpenBazaar/jsonpb v0.0.0-20171123000858-37d32ddf4eef
 	github.com/aead/siphash v1.0.1
-	github.com/classzz/classzz v0.0.0-20210304084432-0bda4791a5e8
+	github.com/classzz/classzz v0.0.0-20210331044259-ceeaaf4b9226
 	github.com/davecgh/go-spew v1.1.1
 	github.com/dchest/siphash v1.2.2 // indirect
 	github.com/golang/protobuf v1.4.3
